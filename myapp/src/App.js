@@ -32,7 +32,7 @@ class App extends Component {
   //   });
   // }
   render() {
-    // console.log('inside render');
+   
     return (
       <div className="App">
         <header className="App-header">
@@ -42,7 +42,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Person />
+        <Person testProp="Samad" />
         <Person />
         <Player name="Unni" age="23"/>
         <Player name="Samad" age="25"/>
