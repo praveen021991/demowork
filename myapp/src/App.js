@@ -31,7 +31,20 @@ class App extends Component {
   //     newProp: 0
   //   });
   // }
+ 
+shouldComponentUpdate(nextProps, nextState){
+    console.log(nextProps, nextState, "In App's shouldComponentUpdate");
+    return true;
+}
+componentWillUpdate(nextProps, nextState){
+    console.log("In App's componentWillUpdate");
+}
+componentDidUpdate(prevProps, prevState){
+    console.log(prevProps, prevState, "In App's componentDidUpdate");
+}
   render() {
+
+    console.log("inside app js render");
    
     return (
       <div className="App">
