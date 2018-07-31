@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium'
 
 class Game extends Component{
     constructor(){
@@ -9,10 +10,15 @@ class Game extends Component{
         console.log("In Game's componentWillMount");
     }
     render() {
+        var pStyles = {
+            "@media screen and (min-width: 700px)": {
+                color: "red"
+            }
+        }
         return(
             <div>
                 <h2>Game type:{this.props.name}</h2>
-                <p>Game players:{this.props.players}</p>
+                <p style={pStyles}>Game players:{this.props.players}</p>
                 <input type="text" 
                     onChange={this.props.change} 
                     value={this.props.name}/>
@@ -40,4 +46,4 @@ class Game extends Component{
     }
     // end of updation life cycle hooks
 } 
-export default Game;
+export default Radium(Game);

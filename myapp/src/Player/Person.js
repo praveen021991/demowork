@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Radium from 'radium';
 
 class Person extends Component{
     componentDidMount(){
@@ -7,7 +8,7 @@ class Person extends Component{
     constructor(props){
       super(props);
         //console.log('starting creation hook: inside constructor');
-        this.valid = true;
+        this.valid = props.isLoggedin;
         // here is ajax call ();
         this.state = {
             sample: "samad"
@@ -22,12 +23,19 @@ class Person extends Component{
     }
 
     render(){
-        //console.log("inside render");
+        var btnStyles = {
+            backgroundColor: "yellow",
+            color: "black",
+            "@media screen and (min-width: 700px)":{
+                backgroundColor: "blue"
+        }
+    }
+        console.log("inside render");
         var a = this.valid ? 
-        (<div>valid Component: {this.props.testProp}</div>): 
+        (<div>valid Component: {this.props.testProp}<button style={btnStyles}>Person Button</button></div>): 
         (<div>invalid Component</div>);
         return a;
     }
 }
 
-export default Person;
+export default Radium(Person);

@@ -4,6 +4,8 @@ import './App.css';
 import Player from './Player/Player';
 import Game from './Player/Game';
 import Person from './Player/Person';
+import Radium, {StyleRoot} from 'radium';
+
 
 class App extends Component {
   state = {
@@ -34,7 +36,7 @@ class App extends Component {
  
 shouldComponentUpdate(nextProps, nextState){
     console.log(nextProps, nextState, "In App's shouldComponentUpdate");
-    return true;
+    return true;  
 }
 componentWillUpdate(nextProps, nextState){
     console.log("In App's componentWillUpdate");
@@ -44,27 +46,38 @@ componentDidUpdate(prevProps, prevState){
 }
   render() {
 
+    var btnStyles = {
+      backgroundColor: "green",
+      ":hover": {
+        backgroundColor: "black"
+      }
+    }
+
+    /* css button:hover {background-color: black} */
     console.log("inside app js render");
    
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Person testProp="Samad" />
-        <Person />
-        <Player name="Unni" age="23"/>
-        <Player name="Samad" age="25"/>
-        <Game name={this.state.game[0].name} 
-              players={this.state.game[0].players} 
-              change={this.onChangeHandler}/>
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+          <Person testProp="Samad" />
+          <Person isLoggedin={true} />
+          <Player name="Unnii"  age="23"/>
+          <Player name="Samad" age="25"/>
+          <Game name={this.state.game[0].name} 
+                players={this.state.game[0].players} 
+                change={this.onChangeHandler}/>
+          <button style={btnStyles}>Submit</button>
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
